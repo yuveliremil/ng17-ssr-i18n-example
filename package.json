@@ -6,9 +6,12 @@
     "start": "ng serve",
     "start:uk": "ng serve --configuration=development-uk",
     "build": "ng build",
+    "build2": "ng build --base-href=/intro && node copy-proxy-server.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ng17-ssr-i18n-example": "node dist/ng17-ssr-i18n-example/server/en-US/server.mjs"
+    "serve:ssr:ng17-ssr-i18n-example": "node dist/ng17-ssr-i18n-example/server/en-US/server.mjs",
+    "serve:ssr": "node dist/ng17-ssr-i18n-example/proxy-server.mjs",
+    "tr": "ng extract-i18n --format=json --output-path=src/locale"
   },
   "private": true,
   "dependencies": {

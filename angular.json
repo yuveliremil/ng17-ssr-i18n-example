@@ -5,8 +5,13 @@
   "projects": {
     "ng17-ssr-i18n-example": {
       "i18n": {
-        "sourceLocale": { "code": "en-US", "baseHref": "/en/" },
-        "locales": { "uk": "src/locale/messages.uk.xlf" }
+        "sourceLocale": { 
+          "code": "en-US", 
+          "baseHref": "/en/" 
+        },
+        "locales": { 
+          "uk": "src/locale/messages.uk.json"
+        }
       },
       "projectType": "application",
       "schematics": {
@@ -59,13 +64,15 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "ssr": true
             },
             "development-uk": {
               "localize": ["uk"],
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "ssr": true
             }
           },
           "defaultConfiguration": "production"

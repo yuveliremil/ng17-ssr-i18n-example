@@ -54,24 +54,24 @@ export function app(locale: string): express.Express {
   return server;
 }
 
-function run(): void {
-  const port = process.env['PORT'] || 4000;
-  const server = express();
-  server.get('/', (req, res) => {
-    const { headers, protocol } = req;
-    res.redirect(`${protocol}://${headers.host}/en`);
-  });
-  // different instance of express app for each locale
-  server.use('/en', app('en-US'));
-  server.use('/uk', app('uk'));
-  server.get('*', (req, res) => {
-    const { headers, protocol } = req;
-    res.redirect(`${protocol}://${headers.host}/en`);
-  });
+// function run(): void {
+//   const port = process.env['PORT'] || 4000;
+//   const server = express();
+//   server.get('/', (req, res) => {
+//     const { headers, protocol } = req;
+//     res.redirect(`${protocol}://${headers.host}/en`);
+//   });
+//   // different instance of express app for each locale
+//   server.use('/en', app('en-US'));
+//   server.use('/uk', app('uk'));
+//   server.get('*', (req, res) => {
+//     const { headers, protocol } = req;
+//     res.redirect(`${protocol}://${headers.host}/en`);
+//   });
 
-  server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
-}
+//   server.listen(port, () => {
+//     console.log(`Node Express server listening on http://localhost:${port}`);
+//   });
+// }
 
-run();
+// run();

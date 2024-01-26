@@ -30,9 +30,9 @@ export class AppComponent {
   }
   public changeLanguage(language: string): void {
     const pathArray = window.location.pathname.split('/');
-    const currentLanguage = pathArray[1];
+    const currentLanguage = pathArray[2];
     if (currentLanguage !== language) {
-      pathArray[1] = language;
+      pathArray[2] = language;
       const newPath = pathArray.join('/');
       window.location.href = newPath;
     }
