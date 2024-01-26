@@ -7,9 +7,9 @@
       "i18n": {
         "sourceLocale": { 
           "code": "en-US", 
-          "baseHref": "/en/" 
+          "baseHref": "/" 
         },
-        "locales": { 
+        "locales": {  
           "uk": "src/locale/messages.uk.json"
         }
       },

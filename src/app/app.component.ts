@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID, isDevMode } from '@angular/core';
+import { Component, Inject, LOCALE_ID, afterRender, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,9 +26,9 @@ export class AppComponent {
     @Inject(LOCALE_ID) private _locale: string
   ) {
     this._registerIconsService.registerIcons(['trident']);
-    this.activeLocale = this._locale as 'en-US' | 'uk';
+    this.activeLocale = this._locale as 'en-US' | 'uk'; 
   }
-  public changeLanguage(language: string): void {
+  public changeLanguage2(language: string): void {
     const pathArray = window.location.pathname.split('/');
     const currentLanguage = pathArray[2];
     if (currentLanguage !== language) {
@@ -37,6 +37,33 @@ export class AppComponent {
       window.location.href = newPath;
     }
   }
+
+  ngOnInit() {
+    // this.changeLanguage('en');
+  }
+
+  public changeLanguage(language: string): void { 
+    const supportedLocales = ['/uk/', '/es/', '/fr/'];
+    let url = location.href; 
+    const regex = /(\/uk\/|\/es\/|\/fr\/)/;
+    const match = url.match(regex);
+    if (match) {
+      const extractedLocale = match[1];  
+      if (language == 'en') {
+        url = location.href.replace(extractedLocale, '/');
+      } 
+      
+      else if (supportedLocales.includes(extractedLocale)) {
+        url = location.href.replace(extractedLocale, `/${language}/`);
+      }
+ 
+    } else { 
+      if (language !== 'en') {
+        url = location.href.replace('/intro', `/intro/${language}`); 
+      }
+    } 
+    location.href = url;
+  } 
 
   public isLanguageChangeAvailable(): boolean {
     return !isDevMode();

@@ -35,8 +35,9 @@ function run() {
         res.redirect(`${protocol}://${headers.host}/${projectName}/en`);
     });
 
-    server.use(`/${projectName}/en`, serverEn('en-US'));
     server.use(`/${projectName}/uk`, serverUk('uk')); 
+    server.use(`/${projectName}/`, serverEn('en-US'));
+    
 
     server.get('*', (req, res) => {
         const { headers, protocol } = req;
