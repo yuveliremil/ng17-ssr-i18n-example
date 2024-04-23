@@ -59,7 +59,15 @@ export class AppComponent {
  
     } else { 
       if (language !== 'en') {
-        url = location.href.replace('/intro', `/intro/${language}`); 
+        const projectName = 'intro'; 
+
+        if (projectName) {
+          url = location.href.replace(`/${projectName}`, `/${projectName}/${language}`); 
+        } else {
+          url = location.href.replace('/', `/${language}`); 
+        }
+
+      
       }
     } 
     location.href = url;
